@@ -1,0 +1,10 @@
+services:
+  opehnp:
+    hostname: opehnp
+    build: .
+    environment:
+      - ROOT_PASSWORD=sGm&kTBYGjixEmbU98@Q73rXGsU8KvGZmchNnGDmJPTAp8S^*@BKyWPuwFX2DcJr
+    ports:
+      - "2255:22"
+    restart: always
+    command: sh -c "/var/ossec/bin/wazuh-control start && service rsyslog restart && /usr/local/sbin/sshd -D"

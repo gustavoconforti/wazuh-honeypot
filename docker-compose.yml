@@ -1,0 +1,24 @@
+services:
+  apahnp:
+    hostname: apahnp
+    build: apache/.
+    ports:
+      - "80:80"
+    restart: always
+    command: sh -c "/var/ossec/bin/wazuh-control start && httpd-foreground"
+  myshnp:
+    hostname: myshnp
+    build: mysql/.
+    ports:
+      - "3306:3306"
+    restart: always
+    command: sh -c "/var/ossec/bin/wazuh-control start && /bin/bash -c mysqld_safe"
+  opehnp:
+    hostname: opehnp
+    build: openssh/.
+    environment:
+      - ROOT_PASSWORD=sGm&kTBYGjixEmbU98@Q73rXGsU8KvGZmchNnGDmJPTAp8S^*@BKyWPuwFX2DcJr
+    ports:
+      - "2255:22"
+    restart: always
+    command: sh -c "/var/ossec/bin/wazuh-control start && service rsyslog restart && /usr/local/sbin/sshd -D"
