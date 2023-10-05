@@ -1,4 +1,4 @@
-# Wazuh Honeypots
+# Wazuh Honeypot
 ## Overview
 This repository contains Docker containers designed to emulate a single vulnerable server, operating as a low-interaction honeypot. Each container includes the Wazuh Agent for generating logs in the format expected by Wazuh Server (v.4.5.0-1).
 
