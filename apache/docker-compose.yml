@@ -1,0 +1,8 @@
+services:
+  apahnp:
+    hostname: apahnp
+    build: .
+    ports:
+      - "80:80"
+    restart: always
+    command: sh -c "/var/ossec/bin/wazuh-control start && httpd-foreground"

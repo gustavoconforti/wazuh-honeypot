@@ -1,0 +1,8 @@
+services:
+  myshnp:
+    hostname: myshnp
+    build: .
+    ports:
+      - "3306:3306"
+    restart: always
+    command: sh -c "/var/ossec/bin/wazuh-control start && /bin/bash -c mysqld_safe"
