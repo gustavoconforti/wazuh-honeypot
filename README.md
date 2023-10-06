@@ -4,7 +4,7 @@
 This repository contains Docker containers designed not only to attract attackers by simulating system vulnerabilities but also to log malicious activities and send them to a Wazuh server for alert triggering. These containers include the Wazuh Agent to facilitate the generation of logs in the format expected by Wazuh Server (v.4.5.0-1).
 
 ## Purpose
-The primary objective of these honeypots extends beyond attracting attackers. While they do simulate vulnerabilities to entice potential attackers to gather insights into their tactics and techniques, the goal is to log malicious activities and transmit them to a Wazuh server for alert triggering.
+The primary objective of these honeypots extends beyond attracting attackers. While they do simulate vulnerabilities to entice potential attackers and gather insights into their tactics and techniques, the goal is to log malicious activities and transmit them to a Wazuh server for alert triggering.
 
 If we consider the term "low-interaction honeypot" in its more fundamental sense, these containers do not precisely fit that description. They operate as full systems (albeit within containers) with real applications running. Unlike Python scripts that emulate an SSH login prompt and banner or an HTTP authentication prompt on port 443, these containers present real services. However, despite this high level of interaction, the information collected by this high-interaction honeypot primarily falls into the reconnaissance category, which, in this context, aligns it with the characteristics of a simple, low-interaction honeypot.
 
