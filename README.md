@@ -14,10 +14,6 @@ The decision to take this approach was driven by two key factors:
 
 - **Scalability**: This approach lays the foundation for future scalability. It is far more manageable to expand upon this groundwork to create a comprehensive high-interaction honeypot, which remains the ultimate goal.
 
-<p align="center">
-  <img src="https://github.com/gustavoconforti/wazuh-honeypot/assets/56703129/d30da931-de3a-44dd-93d5-cfa2c63f6331" style="width:50%;">
-</p>
-
 ## Features
 - Utilizes Docker for straightforward deployment and management.
 - Designed with scalability in mind.
@@ -34,6 +30,10 @@ docker-compose up -d
 
 ## Contribution
 Contributions and enhancements to this project are welcome. Please fork the repository, make your improvements, and submit a pull request. Be sure to adhere to the project's coding standards and guidelines.
+
+<p align="center">
+  <img src="https://github.com/gustavoconforti/wazuh-honeypot/assets/56703129/d30da931-de3a-44dd-93d5-cfa2c63f6331" style="width:50%;">
+</p>
 
 ## License
 This project is licensed under the [GNU General Public License, Version 3 (GPL-3.0)](LICENSE). See the [LICENSE](LICENSE) file for details.
