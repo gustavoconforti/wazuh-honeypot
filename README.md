@@ -24,12 +24,57 @@ The decision to take this approach was driven by two key factors:
 - Integrates the Wazuh Agent for log generation and monitoring.
 - Well-suited for research, threat intelligence, and security analysis.
 
-## ~~Usage~~ (to be documented)
-~~To set up the honeypots, navigate to the root directory of the project and run the following command:~~
+## Prerequisites
 
-```console
-docker-compose up -d
+Before you can run the project, you'll need to install Docker and Docker Compose on your system. Please refer to [this documentation](https://docs.docker.com/engine/install/) for instructions on how to.
+
+## Usage
+Make sure you have `git` installed and clone this repository: and 
+```bash
+sudo [yum|apt] install git
+sudo git clone https://github.com/gustavoconforti/wazuh-honeypot.git
 ```
+Make the `wazuh-honeypot` folder your working directory and start the containers with Docker Compose:
+```bash
+cd wazuh-honeypot
+sudo docker compose up -d
+```
+
+> [!IMPORTANT]
+> At this stage there is still a "bug" that needs to be circumvented with a manual command. To enable the correct formatting of the MySQL logs connect to the machine:
+> ```bash
+> sudo docker exec -it /bin/bash
+> ```
+> And start the script that was copied to it:
+> ```bash
+> (/wazuh-log-formatting.sh & disown) >/dev/null 2>&1
+> ```
+> This will be automated in future updates, but it needs to be executed this way for the time being.
+
+## Testing
+You should now have all containers running and vulnerable ports available in your host IP. I suggest using Metasploit to test the rule triggering in Wazuh:
+Start the console:
+```bash
+msfconsole
+```
+Load the modules:
+```bash
+use auxiliary/scanner/ssh/ssh_login 
+use auxiliary/scanner/http/dir_scanner
+use auxiliary/scanner/mysql/mysql_login
+```
+Set the arguments for each scanner:
+```bash
+gunzip /usr/share/wordlists/rockyou.tar.gz
+set user_file /usr/share/wordlists/rockyou.txt
+set pass_file /usr/share/wordlists/rockyou.txt
+set rhosts 192.168.0.246
+```
+For the `ssh_login` scanner you will need to also set a custom port, as the container initially does not run on port 22:
+```bash
+set rport 2255
+```
+And start the scans issuing the command `run`.
 
 ## Contribution
 Contributions and enhancements to this project are welcome. Please fork the repository, make your improvements, and submit a pull request. Be sure to adhere to the project's coding standards and guidelines.
