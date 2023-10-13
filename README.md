@@ -48,7 +48,7 @@ sudo docker compose up -d
 ```
 
 > [!IMPORTANT]
-> At this stage there is still a "bug" that needs to be circumvented with a manual command. To enable the correct formatting of the MySQL logs connect to the machine:
+> At this stage there is still a "bug" that needs to be circumvented with a manual command. To enable the correct formatting of the MySQL logs, connect to the machine:
 > ```bash
 > sudo docker exec -it /bin/bash
 > ```
