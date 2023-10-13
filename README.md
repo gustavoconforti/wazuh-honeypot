@@ -59,7 +59,8 @@ sudo docker compose up -d
 > This will be automated in future updates, but it needs to be executed this way for the time being.
 
 ## Testing
-You should now have all containers running and vulnerable ports available in your host IP. I suggest using Metasploit to test the rule triggering in Wazuh:
+You should now have all containers running and vulnerable ports available in your host IP. I suggest using Metasploit to test the rule triggering in Wazuh.
+
 Start the console:
 ```bash
 msfconsole
@@ -81,7 +82,7 @@ For the `ssh_login` scanner you will need to also set a custom port, as the cont
 ```bash
 set rport 2255
 ```
-And start the scans issuing the command `run`.
+And start the scans issuing the command `run`. If everything is working fine, you should see alerts popping in your Wazuh dashboard.
 
 ## Contribution
 Contributions and enhancements to this project are welcome. Please fork the repository, make your improvements, and submit a pull request. Be sure to adhere to the project's coding standards and guidelines.
