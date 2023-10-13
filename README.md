@@ -29,14 +29,21 @@ The decision to take this approach was driven by two key factors:
 Before you can run the project, you'll need to install Docker and Docker Compose on your system. Please refer to [this documentation](https://docs.docker.com/engine/install/) for instructions on how to.
 
 ## Usage
-Make sure you have `git` installed and clone this repository: and 
+Make sure you have `git` installed and clone this repository:
 ```bash
 sudo [yum|apt] install git
 sudo git clone https://github.com/gustavoconforti/wazuh-honeypot.git
 ```
-Make the `wazuh-honeypot` folder your working directory and start the containers with Docker Compose:
+Navigate to the `wazuh-honeypot` folder and insert your Wazuh server IP in the Dockerfile of each container:
 ```bash
 cd wazuh-honeypot
+WAZUH_IP="192.168.0.1"
+sudo sed -Ei "s/WAZUH_MANAGER='([0-9]{1,3}\.){3}[0-9]{1,3}'/WAZUH_MANAGER='$WAZUH_IP'/" mysql/Dockerfile
+sudo sed -Ei "s/WAZUH_MANAGER='([0-9]{1,3}\.){3}[0-9]{1,3}'/WAZUH_MANAGER='$WAZUH_IP'/" openssh/Dockerfile
+sudo sed -Ei "s/WAZUH_MANAGER='([0-9]{1,3}\.){3}[0-9]{1,3}'/WAZUH_MANAGER='$WAZUH_IP'/" apache/Dockerfile
+```
+Start the containers with Docker Compose:
+```bash
 sudo docker compose up -d
 ```
 
