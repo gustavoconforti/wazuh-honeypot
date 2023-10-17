@@ -50,7 +50,7 @@ sudo docker compose up -d
 > [!IMPORTANT]
 > At this stage there is still a "bug" that needs to be circumvented with a manual command. To enable the correct formatting of the MySQL logs, connect to the machine:
 > ```bash
-> sudo docker exec -it /bin/bash
+> sudo docker exec -it wazuh-honeypot_myshnp_1 /bin/bash
 > ```
 > And start the script that was copied to it:
 > ```bash
